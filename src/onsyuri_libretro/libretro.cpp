@@ -60,7 +60,7 @@ retro_set_environment(retro_environment_t cb)
             .key = "onsyuri_script_encoding",
             .desc = "Script Encoding",
             .info = NULL,
-            .values = { { "GBK" }, { "SHIFTJIS" }, { NULL } },
+            .values = { { "GBK" }, { "SHIFTJIS" }, { "UTF8" }, { NULL } },
             .default_value = "GBK",
         },
         {

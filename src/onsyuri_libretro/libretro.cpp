@@ -13,7 +13,6 @@
 
 #include "ONScripter.h"
 #include "SDL_libretro.h"
-#include "coding2utf16.h"
 #include "gbk2utf16.h"
 #include "sjis2utf16.h"
 
@@ -171,6 +170,8 @@ retro_init(void)
     if (environ_cb(RETRO_ENVIRONMENT_GET_VARIABLE, &var)) {
         if (strcmp(var.value, "SHIFTJIS") == 0) {
             coding2utf16 = new SJIS2UTF16();
+        } else if (strcmp(var.value, "UTF8") == 0) {
+            coding2utf16 = new UTF82UTF16();
         } else {
             coding2utf16 = new GBK2UTF16();
         }

@@ -164,6 +164,8 @@ retro_init(void)
 {
     enum retro_pixel_format pixfmt = RETRO_PIXEL_FORMAT_XRGB8888;
     environ_cb(RETRO_ENVIRONMENT_SET_PIXEL_FORMAT, &pixfmt);
+
+    
     struct retro_variable var = { 0 };
     var.key = "onsyuri_script_encoding";
 
@@ -178,19 +180,8 @@ retro_init(void)
             }
         }
     }
-    
-    
-    struct retro_variable var = { 0 };
-    var.key = "onsyuri_script_encoding";
-    if (environ_cb(RETRO_ENVIRONMENT_GET_VARIABLE, &var)) {
-        if (strcmp(var.value, "SHIFTJIS") == 0) {
-            coding2utf16 = new SJIS2UTF16();
-        } else if (strcmp(var.value, "UTF8") == 0) {
-            coding2utf16 = new UTF82UTF16();
-        } else {
-            coding2utf16 = new GBK2UTF16();
-        }
-    }
+   
+   
     var.key = "onsyuri_mouse_mode";
     if (environ_cb(RETRO_ENVIRONMENT_GET_VARIABLE, &var)) {
         if (strcmp(var.value, "Classical") == 0) {
